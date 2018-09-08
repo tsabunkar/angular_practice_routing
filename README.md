@@ -64,3 +64,62 @@ ___clas___{
 
 
 -------------------------------------------------------------------------------------------------------------
+->Fetching routes Parameter :
+While defining the routes specifiy -
+{ path: 'users/:myid/:myname', component: UsersComponent }
+
+While fetching the paramter from the url - 
+this.activatedRoute.snapshot.params['myid']
+
+->Fetching routes Parameter Dyanmically:
+this.activatedRoute.params.subscribe((params : Params) => {})
+
+params - here is an Observables, Observables helps us to work with Async functions
+Observable is some event which might happens in the future, without having to wait for that event to happen, thus methods which has subsribed to this Observable will be notified when the event occurs in the future
+
+
+-------------------------------------------------------------------------------------------------------------
+How to pass and retrieve Query parameters in Angular -
+
+->PASSING :-
+*)Passing QueryParams & Fragments-
+    <a [routerLink]="['/servers', 5, 'editmyserver']" 
+      [queryParams]="{allowEdit : 1}"
+      fragment="loading"
+        class="list-group-item"
+        *ngFor="let server of servers">
+        {{ server.name }}
+      </a>
+*)Passing QueryParams & Fragments (Doing Programmatically) -
+
+  this.router.navigate(
+            ['/servers', id, 'editmyserver'],
+            {
+                queryParams: { allowEdit: '1' },
+                fragment: 'loading'
+            }
+        );
+
+->FETCHING/RETRIVING :-
+*)fetching/Retrieving QueryParams & Fragments : 
+
+    console.log('Query Param is : ', this.activatedRoute.snapshot.queryParams);
+    console.log('Fragment Param is : ', this.activatedRoute.snapshot.fragment);
+
+but better approach is not using snapshot apporach, rather using Observable-subscribe approach
+    this.activatedRoute.queryParams.subscribe(params => {
+      console.log('Query Param is : ', params);
+    })
+    this.activatedRoute.fragment.subscribe(params => {
+      console.log('Fragment Param is : ', params);
+    })
+
+Note : queryParams is of type-> Observable
+
+
+-------------------------------------------------------------------------------------------------------------
+
+
+
+
+
