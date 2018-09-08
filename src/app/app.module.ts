@@ -18,6 +18,7 @@ const appRoutes: Routes = [ //this Routes is an array , which has list of all th
   { path: 'users', component: UsersComponent },
   { path: 'users/:myid/:myname', component: UsersComponent }, // myid -> dynamic paramter in the url
   { path: 'servers', component: ServersComponent },
+  { path: 'servers/:myIdVara', component: ServerComponent },
   { path: 'servers/:id/editmyserver', component: EditServerComponent },
 ]
 @NgModule({
