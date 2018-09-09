@@ -12,6 +12,7 @@ export class EditServerComponent implements OnInit {
   server: { id: number, name: string, status: string };
   serverName = '';
   serverStatus = '';
+  isAllowedToEdit = false;
 
   constructor(private serversService: ServersService, private activatedRoute: ActivatedRoute) { }
 
@@ -24,6 +25,9 @@ export class EditServerComponent implements OnInit {
     //! but better approach is not using snapshot apporach, rather using Observable-subscribe approach
     this.activatedRoute.queryParams.subscribe(params => {
       console.log('Query Param is : ', params);
+      console.log('** ', params['allowEdit']);
+      this.isAllowedToEdit = params['allowEdit'] === '3' ? true : false;
+      //allowing only devserver to edit
     })
     this.activatedRoute.fragment.subscribe(params => {
       console.log('Fragment Param is : ', params);

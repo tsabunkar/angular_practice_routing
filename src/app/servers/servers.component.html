@@ -13,8 +13,9 @@
       ?allowEdit=1 -> is query params 
       #loading -> is fragment (place where want to jump to)-->
       
+      <!-- [queryParams]="{allowEdit : server.id === 3 ? 1 : 0}" -->
       <a [routerLink]="['/servers', server.id]" 
-      [queryParams]="{allowEdit : server.id}"
+      [queryParams]="{allowEdit : server.id }"
       fragment="loading"
         class="list-group-item"
         *ngFor="let server of servers">

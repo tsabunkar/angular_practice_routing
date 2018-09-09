@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ServersService } from '../servers.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-server',
@@ -11,7 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 export class ServerComponent implements OnInit {
   server: { id: number, name: string, status: string };
 
-  constructor(private serversService: ServersService, private activatedRoute: ActivatedRoute) { }
+  constructor(private serversService: ServersService, private activatedRoute: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
     const idVal = this.activatedRoute.snapshot.params['myIdVara']
@@ -27,6 +28,19 @@ export class ServerComponent implements OnInit {
       this.server = this.serversService.getServer(+params['allowEdit']);
     })
 
+  }
+
+  onEditServerComponent() {
+    console.log('on click of Edit Server button');
+    console.log(this.server.id);
+    console.log(this.activatedRoute);
+    /*  this.router.navigate(['/servers', this.server.id, 'editmyserver'])   */ //!using absolute path
+    this.router.navigate(['editmyserver'], {
+      relativeTo: this.activatedRoute,
+      queryParamsHandling: 'preserve'
+    }) 
+    //!using relative path
+    //  queryParamsHandling : 'preserve' -> Preservers the queryparams value
   }
 
 }

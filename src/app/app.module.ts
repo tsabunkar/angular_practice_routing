@@ -12,6 +12,7 @@ import { EditServerComponent } from './servers/edit-server/edit-server.component
 import { HomeComponent } from './home/home.component';
 import { ServersService } from './servers/servers.service';
 import { UserComponent } from './users/user/user.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 /* const appRoutes: Routes = [ //this Routes is an array , which has list of all the routes
   { path: '', component: HomeComponent },
@@ -37,7 +38,10 @@ const appRoutes: Routes = [ //this Routes is an array , which has list of all th
       { path: ':id/editmyserver', component: EditServerComponent }
     ]
   },
-
+  { path: 'not-found', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/not-found' },   //this ** -> is called validcard Route, which will capture all
+  // the rotues which end client can enter (//!Note : Validcard route should always be placed at  bottom in the
+  //! list of routes bcoz- ROUTES GET PARASE FROM TOP TO BOTTOM)
 ]
 @NgModule({
   declarations: [
@@ -47,7 +51,8 @@ const appRoutes: Routes = [ //this Routes is an array , which has list of all th
     ServersComponent,
     UserComponent,
     EditServerComponent,
-    ServerComponent
+    ServerComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
