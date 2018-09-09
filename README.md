@@ -150,3 +150,13 @@ check this ex in- server-resolver.service.ts
 
 
 -------------------------------------------------------------------------------------------------------------
+localhost:42000/server
+If we r hosting this in the real production server then this routing might not work bcoz-
+routes/url will be parsed/handled by server machine first then, url will be parsed by Angular
+In that case use the old technique called -> hashMode Routing
+In app-routing.module.ts -
+    imports: [RouterModule.forRoot(appRoutes, { useHash: true })], //* default is false
+Url would be like - http://localhost:4200/#/servers
+
+
+-------------------------------------------------------------------------------------------------------------

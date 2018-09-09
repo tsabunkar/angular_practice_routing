@@ -25,7 +25,7 @@ const appRoutes: Routes = [ //this Routes is an array , which has list of all th
     {
         //* protecting/gaurding '/servers'(parent route) and all its child routes (i.e-servers/myIdVara, servers/id/editmyserver) by using - canActivate
         path: 'servers', canActivate: [MyAuthGuard], component: ServersComponent, children: [
-            { path: ':myIdVara', component: ServerComponent , resolve : {serverKey : MyServerResolverGaurd} }, //using reolver for this route - servers/myIdVara //?Passing dyanmic data to a route
+            { path: ':myIdVara', component: ServerComponent, resolve: { serverKey: MyServerResolverGaurd } }, //using reolver for this route - servers/myIdVara //?Passing dyanmic data to a route
             { path: ':id/editmyserver', component: EditServerComponent, canDeactivate: [MyCanDeactiveGaurd] } //similar to ->   { path: 'servers/:id/editmyserver', component: EditServerComponent }
         ]
     },
@@ -37,6 +37,7 @@ const appRoutes: Routes = [ //this Routes is an array , which has list of all th
 ]
 
 @NgModule({
+    // imports: [RouterModule.forRoot(appRoutes, { useHash: true })], //* default is false, is called hashMode Routing
     imports: [RouterModule.forRoot(appRoutes)],
     exports: [RouterModule]
 })
