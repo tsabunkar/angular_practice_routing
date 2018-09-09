@@ -118,8 +118,9 @@ Note : queryParams is of type-> Observable
 
 
 -------------------------------------------------------------------------------------------------------------
-
-
+Gaurds -> It is used to protect/safegaurd/gaurd our routes
+To protect our route we use -> canActivate() -> [THis will protect parent route and all its child routes]
+whereas, canActivateChild() -> [This will protect only child routes but not parent route] 
 
 
 

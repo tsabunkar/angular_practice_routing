@@ -14,6 +14,8 @@ import { ServersService } from './servers/servers.service';
 import { UserComponent } from './users/user/user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MyAppRoutingModule } from './routing/app-routing.module';
+import { MyAuthGuard } from './auth-guard/auth-guard.service';
+import { MyAuthService } from './auth-guard/auth.service';
 
 /* const appRoutes: Routes = [ //this Routes is an array , which has list of all the routes
   { path: '', component: HomeComponent },
@@ -66,7 +68,7 @@ const appRoutes: Routes = [ //this Routes is an array , which has list of all th
     //*Importing our own custom routing module (which has details of all the routes and its component)
     MyAppRoutingModule
   ],
-  providers: [ServersService],
+  providers: [ServersService, MyAuthGuard, MyAuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
