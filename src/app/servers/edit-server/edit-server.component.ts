@@ -68,9 +68,9 @@ export class EditServerComponent implements OnInit, MyCanComponentDeactive {
     if (!this.isAllowedToEdit) {
       return true;
     }
-    else if ((this.serverName !== this.server.name || this.serverStatus !== this.serverStatus)
+    if ((this.serverName !== this.server.name || this.serverStatus !== this.serverStatus)
       && !this.isChangesSaved) {
-      confirm('Do you want to discard changes ?')
+      return confirm('Do you want to discard changes ?')
       // return false;
     }
     else {
