@@ -16,7 +16,7 @@ export class ServerComponent implements OnInit {
 
   ngOnInit() {
     const idVal = this.activatedRoute.snapshot.params['myIdVara']
-    console.log('-------');
+    console.log('--@@@@@@@-----');
     console.log(idVal);//string
     console.log(+idVal);//number
     this.server = this.serversService.getServer(+idVal);//converting string to number
@@ -33,7 +33,6 @@ export class ServerComponent implements OnInit {
   onEditServerComponent() {
     console.log('on click of Edit Server button');
     console.log(this.server.id);
-    console.log(this.activatedRoute);
     /*  this.router.navigate(['/servers', this.server.id, 'editmyserver'])   */ //!using absolute path
     this.router.navigate(['editmyserver'], {
       relativeTo: this.activatedRoute,

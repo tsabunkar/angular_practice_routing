@@ -9,6 +9,7 @@ import { ServerComponent } from '../servers/server/server.component';
 import { EditServerComponent } from '../servers/edit-server/edit-server.component';
 import { PageNotFoundComponent } from '../page-not-found/page-not-found.component';
 import { MyAuthGuard } from '../auth-guard/auth-guard.service';
+import { MyCanDeactiveGaurd } from '../servers/edit-server/can-deactivate-gaurd.service';
 
 
 const appRoutes: Routes = [ //this Routes is an array , which has list of all the routes
@@ -23,7 +24,7 @@ const appRoutes: Routes = [ //this Routes is an array , which has list of all th
         //* protecting/gaurding '/servers'(parent route) and all its child routes (i.e-servers/myIdVara, servers/id/editmyserver) by using - canActivate
         path: 'servers', canActivate: [MyAuthGuard], component: ServersComponent, children: [
             { path: ':myIdVara', component: ServerComponent }, //similiar to ->   { path: 'servers/:myIdVara', component: ServerComponent }
-            { path: ':id/editmyserver', component: EditServerComponent } //similar to ->   { path: 'servers/:id/editmyserver', component: EditServerComponent }
+            { path: ':id/editmyserver', component: EditServerComponent, canDeactivate: [MyCanDeactiveGaurd] } //similar to ->   { path: 'servers/:id/editmyserver', component: EditServerComponent }
         ]
     },
     { path: 'not-found', component: PageNotFoundComponent },
