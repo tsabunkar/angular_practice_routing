@@ -1,18 +1,25 @@
 <div class="row">
   <div class="col-xs-12 col-sm-4">
     <div class="list-group">
-      <a
-        [routerLink]="['/users', user.id, user.name]"
-        href="#"
-        class="list-group-item"
-        *ngFor="let user of users">
+      <a [routerLink]="['/users', user.id, user.name]"
+      class="list-group-item" 
+      *ngFor="let user of users">
         {{ user.name }}
       </a>
     </div>
   </div>
   <div class="col-xs-12 col-sm-4">
-    <app-user></app-user>
+    <!-- <app-user></app-user> -->
+<b>This is children routes for '/users'</b>
+    <router-outlet></router-outlet>
+
+    <!-- <router-outlet></router-outlet> tag will load all the children(nested) routes
+    for '/users' routes i.e-
+{
+  path: 'users', component: UsersComponent, children: [
+    { path: 'users/:myid/:myname', component: UsersComponent },
+
+  ]
+}, -->
   </div>
 </div>
-
-

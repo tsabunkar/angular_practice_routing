@@ -23,9 +23,23 @@
     </div>
   </div>
   <div class="col-xs-12 col-sm-4">
-    <button class="btn btn-primary" (click)="onReloadOfSameComponent()">Reload Server</button>
+      <b>This is children routes for '/servers'</b>
+    <router-outlet></router-outlet>
+
+    <!--  
+    In this  <router-outlet></router-outlet> tag will load all the children(Nested) routes
+    for '/servers' routes i.e-
+    {
+      path: 'servers', component: ServersComponent, children: [
+        { path: ':myIdVara', component: ServerComponent },
+        { path: ':id/editmyserver', component: EditServerComponent }
+      ]
+    },
+      -->
+
+    <!--    <button class="btn btn-primary" (click)="onReloadOfSameComponent()">Reload Server</button>
     <app-edit-server></app-edit-server>
-    <hr>
-    <!-- <app-server></app-server> -->
+    <hr> 
+      <app-server></app-server> -->
   </div>
 </div>
