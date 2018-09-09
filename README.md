@@ -126,3 +126,27 @@ canDeactive() ->
   If user login and click on server tab > devserver > clicks editServer btn > NOw changes servername (input text box) but forgot to click updateServer or tries to go back page, then we need to implement a logic to show a pop-up, saying do you want to save the changes ?
 
 
+-------------------------------------------------------------------------------------------------------------
+Passing Static data in a route :-
+const appRoutes: Routes = [
+  -----
+  { path: 'not-found', component: ErrorPageComponent, data: { errorMessageKey: 'Page not found!' } }
+  ------
+]
+
+Now to fetch this data object value :-    this.activatedRoute.snapshot.data['errorMessageKey']
+
+
+-------------------------------------------------------------------------------------------------------------
+If we want to fetch the dynamic data before route is rendered/hit/load
+for ex- if we want to fetch some data from backend before route is rendered
+In this use case we will use resolver gaurd
+Resolver is also a service gaurd , This will allow us to run some code before a route is rendered
+so difference b/w resolver & canActivate is - 
+resolver will never decides weather a route must be loaded or not.
+It will always load the route, but before loading the route it will allow us to run some code
+
+check this ex in- server-resolver.service.ts
+
+
+-------------------------------------------------------------------------------------------------------------

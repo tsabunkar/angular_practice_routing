@@ -17,6 +17,8 @@ import { MyAppRoutingModule } from './routing/app-routing.module';
 import { MyAuthGuard } from './auth-guard/auth-guard.service';
 import { MyAuthService } from './auth-guard/auth.service';
 import { MyCanDeactiveGaurd } from './servers/edit-server/can-deactivate-gaurd.service';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { MyServerResolverGaurd } from './servers/server/server-resolver.service';
 
 /* const appRoutes: Routes = [ //this Routes is an array , which has list of all the routes
   { path: '', component: HomeComponent },
@@ -58,7 +60,8 @@ const appRoutes: Routes = [ //this Routes is an array , which has list of all th
     UserComponent,
     EditServerComponent,
     ServerComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
@@ -69,7 +72,8 @@ const appRoutes: Routes = [ //this Routes is an array , which has list of all th
     //*Importing our own custom routing module (which has details of all the routes and its component)
     MyAppRoutingModule
   ],
-  providers: [ServersService, MyAuthGuard, MyAuthService, MyCanDeactiveGaurd],//Gaurds must provided in providers array
+  providers: [ServersService, MyAuthGuard, MyAuthService,
+    MyCanDeactiveGaurd, MyServerResolverGaurd],//Gaurds must provided in providers array
   bootstrap: [AppComponent]
 })
 export class AppModule { }

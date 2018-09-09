@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ServersService } from '../servers.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, Data } from '@angular/router';
 
 @Component({
   selector: 'app-server',
@@ -15,6 +15,7 @@ export class ServerComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    /* 
     const idVal = this.activatedRoute.snapshot.params['myIdVara']
     console.log('--@@@@@@@-----');
     console.log(idVal);//string
@@ -27,7 +28,11 @@ export class ServerComponent implements OnInit {
       console.log('Query Param is : ', +params.allowEdit);//number
       this.server = this.serversService.getServer(+params['allowEdit']);
     })
-
+ */
+    //using the concept of resolver Gaurd -
+    this.activatedRoute.data.subscribe((data: Data) => {
+      this.server = data['serverKey']
+    });
   }
 
   onEditServerComponent() {
@@ -37,7 +42,7 @@ export class ServerComponent implements OnInit {
     this.router.navigate(['editmyserver'], {
       relativeTo: this.activatedRoute,
       queryParamsHandling: 'preserve'
-    }) 
+    })
     //!using relative path
     //  queryParamsHandling : 'preserve' -> Preservers the queryparams value
   }
