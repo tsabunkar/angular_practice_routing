@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { ServersService } from './servers/servers.service';
 import { UserComponent } from './users/user/user.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MyAppRoutingModule } from './routing/app-routing.module';
 
 /* const appRoutes: Routes = [ //this Routes is an array , which has list of all the routes
   { path: '', component: HomeComponent },
@@ -23,8 +24,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
   { path: 'servers/:id/editmyserver', component: EditServerComponent },
 ] */
 
-//?using the concept of Child Routes
+//? using the concept of Child Routes (Nested Routes)
 
+/* 
 const appRoutes: Routes = [ //this Routes is an array , which has list of all the routes
   { path: '', component: HomeComponent },
   {
@@ -34,15 +36,16 @@ const appRoutes: Routes = [ //this Routes is an array , which has list of all th
   },
   {
     path: 'servers', component: ServersComponent, children: [
-      { path: ':myIdVara', component: ServerComponent },
-      { path: ':id/editmyserver', component: EditServerComponent }
+      { path: ':myIdVara', component: ServerComponent }, //similiar to ->   { path: 'servers/:myIdVara', component: ServerComponent }
+      { path: ':id/editmyserver', component: EditServerComponent } //similar to ->   { path: 'servers/:id/editmyserver', component: EditServerComponent }
     ]
   },
   { path: 'not-found', component: PageNotFoundComponent },
   { path: '**', redirectTo: '/not-found' },   //this ** -> is called validcard Route, which will capture all
-  // the rotues which end client can enter (//!Note : Validcard route should always be placed at  bottom in the
+  //the rotues which end client can enter (//!Note : Validcard route should always be placed at  bottom in the
   //! list of routes bcoz- ROUTES GET PARASE FROM TOP TO BOTTOM)
 ]
+ */
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,8 +61,10 @@ const appRoutes: Routes = [ //this Routes is an array , which has list of all th
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(appRoutes) // RouterModule must be added in imports Array. RouterModule has forRoot() method
+    // RouterModule.forRoot(appRoutes) // RouterModule must be added in imports Array. RouterModule has forRoot() method
     // which is used to register all our list of routes
+    //*Importing our own custom routing module (which has details of all the routes and its component)
+    MyAppRoutingModule
   ],
   providers: [ServersService],
   bootstrap: [AppComponent]
